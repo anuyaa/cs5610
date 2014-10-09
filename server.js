@@ -6,7 +6,7 @@ var express = require('express');
 //instantiates both libraries and connect to database to cs5610
 var app = express();
 //var db = mongojs("cs5610",["student","professor"]);
-app.use(expres.static(_dirname+'/public'));
+//app.use(express.static(_dirname+'/public'));
 
 app.get("/hello", function(req, res){
 	res.send("Hello world from open shift application ");
