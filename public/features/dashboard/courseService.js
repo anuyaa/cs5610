@@ -4,7 +4,6 @@
 // This service is used for professor
 app.factory("CourseService", function ($http,$location,$state) {
 
-
     var user_id ;
     var create = function (cinfo, callback) {
         console.log("course service",cinfo);
@@ -101,8 +100,6 @@ app.factory("CourseService", function ($http,$location,$state) {
             //callback(data);
             callback(data, status, headers, config);
 
-            // forward the user to its registration page
-
         }).error(function (data, status, headers, config) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
@@ -122,9 +119,7 @@ app.factory("CourseService", function ($http,$location,$state) {
 
             });
     }
-
     return {
-
         "create": create,
         "selectOne": selectOne,
         "selectAll": selectAll,
