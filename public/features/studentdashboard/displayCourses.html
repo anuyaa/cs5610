@@ -1,0 +1,64 @@
+﻿<div ng-switch on="selection">
+
+    <div  ng-switch-when="exist">
+
+        <!-- when there are courses -->
+        <div class="row yes-courses">
+            <!-- when there are no courses -->
+            <div class="col-md-3 cleft-panel">
+                <div>
+                    <ul class="nav nav-pills nav-stacked " role="tablist">
+                        <li class="course_li plaintext" role="presentation"  ng-click="showListCourse()" >
+                            <a href="">Enroll </a></li>
+                        <li class="course_li plaintext" data-ng-repeat = "c in allCourses" role="presentation" >
+                            <a href ng-click="setCurrentCourse(c._id)">{{ c.name }}
+                                <span class="glyphicon glyphicon-fire" style="float:right;" ng-click="unenroll(c._id)"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col-md-9 cright-panel">
+
+                <div ng-if="show == 'courseNotExist'">
+                    This course have been removed from the list.
+                </div>
+                <div ng-if="show == 'listCourses'">
+                    <div ng-include src="'../features/studentdashboard/enrollCourse.html'"></div>
+                </div>
+                <div ng-if="show == 'emptyDashboard'">
+                    No available quizzes for this course.
+                </div>
+                <div ng-if="show == 'quizDashboard'">
+                    <tabset justified="true">
+                        <tab heading="My Quizzes">
+                            <br/>
+                            <span class="plaintext">Quizzes submitted by me. </span>
+                            <br/>
+                            <div ng-include src="'../features/studentdashboard/displayMyQuizzes.html'"></div>
+                        </tab>
+                        <tab heading="Available Quizzes">
+                            <br/>
+                            <span class="plaintext">Quizzes available course. </span>
+                            <br/>
+                            <div ng-include src="'../features/studentdashboard/displayAvailableQuizzes.html'"></div>
+                        </tab>
+                        <tab heading="Old Quizzes">
+                            <br/>
+                            <span class="plaintext">Quizzes posted previously in this course. </span>
+                            <br/>
+                            <div ng-include src="'../features/studentdashboard/displayOldQuizzes.html'"></div>
+                        </tab>
+                    </tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  ng-switch-when="not_exist">
+         <h2>Enroll in courses</h2>
+         <div ng-include src="'../features/studentdashboard/enrollCourse.html'"></div>
+    </div>
+
+</div>

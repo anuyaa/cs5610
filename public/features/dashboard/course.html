@@ -1,0 +1,43 @@
+﻿<div class="row" >
+
+    <div class="course-top">
+        <div class="row">
+            <div class="col-md-6 course-name "  > {{currentCourse.name}} </div>
+            <div class="col-md-6 pull-right quiz-button">
+                <button class="btn btn-primary" ng-click="createQuiz(currentCourse)">create Quiz</button>
+                <button class="btn btn-primary" ng-click="deleteCourse(currentCourse)">Delete Course</button>
+                <button class="btn btn-primary" ng-click="editCourse(currentCourse)">Edit Course</button>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 course-info">
+                 {{currentCourse.description}}
+            </div>
+        </div>
+    </div>
+
+    <div class="course-body" >
+        <div class="row">
+            <div class="col-md-12 all-quizzes">
+
+                <div ng-switch on="quiz">
+                    <div ng-switch-when="create">
+                        <div ng-include src="'../features/dashboard/createQuiz.html'"></div>
+                    </div>
+                    <div ng-switch-when="display">
+                        <!-- show all quizes -->
+                        <div ng-include src="'../features/dashboard/displayQuizzes.html'"></div>
+                    </div>
+                    <div ng-switch-when="displayAQuiz">
+                        <!-- show a quizes -->
+                        <div ng-include src="'../features/dashboard/displayQuiz.html'"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>  

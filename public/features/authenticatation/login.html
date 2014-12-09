@@ -1,0 +1,49 @@
+<!--<div class="row">
+   <div class="row">
+       <div class="btn-group" dropdown is-open="status.isopen">
+           <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled" ng-model="selectedUserType">
+               Button dropdown <span class="caret"></span>
+           </button>
+           <ul class="dropdown-menu" role="menu">
+               <li><a href="#" ng-click="selectUser('prof')">Professor</a></li>
+               <li class="divider"></li>
+               <li><a href="#" ng-click="selectUser('stud')">Student</a></li>
+           </ul>
+       </div>
+       <div class="col-md-6 col-md-offset-3">
+           <input type="text" placeholder="Enter Your Email" ng-model="login.mail" class="form-control"/>
+           <button class="btn btn-primary" ng-click="login()">Login</button>
+       </div>
+   </div>
+</div>-->
+
+<div class="loginDiv" >
+    <div class="row">
+        <h3 style="text-align:center;"><strong>Login</strong></h3>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group" >
+                        <span class="input-group-addon">
+                            <input type="radio" ng-click="selectUser('prof')" class="btn">
+                        </span>
+                <input type="text" class="form-control" placeholder="Professor" disabled="true">
+            </div>
+            <div class="input-group" >
+                        <span class="input-group-addon">
+                            <input type="radio" ng-click="selectUser('stud')" class="btn">
+                        </span>
+                <input type="text" class="form-control" placeholder="Student" disabled="true">
+            </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="col-md-12">
+            <input type="text" placeholder="Enter Your Email" ng-model="login.mail" class="form-control"/>
+            <button class="btn btn-primary" ng-click="login()">Login</button>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <span class="plaintext">I don't have account <a ng-click="registerClick()">Register</a></span>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿
+   <div class="loginDiv" >
+        <div class="row">
+            <h5 style="text-align:center;"><strong>Register</strong></h5>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group" >
+                        <span class="input-group-addon">
+                            <input type="radio" ng-click="selectUser('prof')" class="btn">
+                        </span>
+                    <input type="text" class="form-control" placeholder="Professor" disabled="true">
+                </div>
+                <div class="input-group" >
+                        <span class="input-group-addon">
+                            <input type="radio" ng-click="selectUser('stud')" class="btn">
+                        </span>
+                    <input type="text" class="form-control" placeholder="Student" disabled="true">
+                </div>
+            </div>
+            &nbsp;&nbsp;&nbsp;
+            <div class="col-md-12">
+                <div class="user-reg" ng-hide="reg_hide">
+                    <input type="text" class="form-control" ng-model="user.fname" placeholder="Firstname" /><br />
+                    <input type="text" class="form-control" ng-model="user.lname" placeholder="Lastname" /><br />
+                    <input type="email" class="form-control" ng-model="user.email" placeholder="Email" required/><br />
+                    <input type="text" class="form-control" ng-model="user.name" placeholder="Username [alphanumeric]" /><br />
+                    <input type="text" class="form-control" ng-model="user.phone" placeholder="Phone [numeric]" /><br />
+                    <!-- <input type="file" class="form-control" ng-file-select="user.photo" placeholder="upload you pic" /><br />-->
+                    <button type="button" class="btn btn-primary" data-ng-click="register()">Register</button>
+                </div>
+            </div>
+        </div>
+       <br/>
+       <div class="row">
+           <span class="plaintext">I have account <a ng-click="loginClick()">Login</a></span>
+       </div>
+   </div>
+   <!-- <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            &lt;!&ndash;<div ng-hide="sel_dropdown_hide">
+                <h4> Who are you ?</h4>
+                &lt;!&ndash; Single button &ndash;&gt;
+                <div class="btn-group" dropdown is-open="status.isopen">
+                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled" ng-model="selectedUserType">
+                        Button dropdown <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#" ng-click="selectUser('prof')">Professor</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" ng-click="selectUser('stud')">Student</a></li>
+                    </ul>
+                </div>&ndash;&gt;&lt;!&ndash;
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                        Select User
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"  ng-click="selectUser('prof')">
+                            <a role="menuitem" tabindex="-1" href="#">Professor</a>
+                        </li>
+                        <li role="presentation" ng-click="selectUser('stud')">
+                            <a role="menuitem" tabindex="-1" href="#">Student</a>
+                        </li>
+                    </ul>
+                </div>&ndash;&gt;
+            </div>
+
+            <br />
+
+             <div class="user-reg" ng-hide="reg_hide">
+                 <input type="text" class="form-control" ng-model="user.fname" placeholder="Firstname" /><br />
+                 <input type="text" class="form-control" ng-model="user.lname" placeholder="Lastname" /><br />
+                 <input type="email" class="form-control" ng-model="user.email" placeholder="Email" required/><br />
+                 <input type="text" class="form-control" ng-model="user.name" placeholder="Username [alphanumeric]" /><br />
+                &lt;!&ndash; <input type="file" class="form-control" ng-file-select="user.photo" placeholder="upload you pic" /><br />&ndash;&gt;
+                 <button type="button" class="btn btn-primary" data-ng-click="register()">Register</button>
+             </div>
+        </div>-->
+    </div>

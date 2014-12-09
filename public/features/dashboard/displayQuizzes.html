@@ -1,0 +1,43 @@
+<div ng-repeat="e in quizArray" >
+
+    <a href=""  ng-click="selectQuiz(e)">
+        <div class="a-quiz" >
+            <div class="a-quiz-title">
+                <div class="pull-left">
+                    <span>{{e.quiz.title}}</span>
+                </div>
+                <div ng-click="selectQuiz(e)" class="pull-right">
+                    <span class="glyphicon glyphicon-pencil" ></span>
+                </div>
+            </div>
+            <div class="a-quiz-body">
+                <div class="quiz-body-inner">Date created </div>
+                <div class="quiz-body-inner"> {{e.quiz.last_modified | date : mediumDate}}</div>&nbsp;
+                <div class="quiz-body-inner">Date due</div>
+                <div class="quiz-body-inner"> {{e.quiz.due_date | date : mediumDate}}</div>
+            </div>
+            <div class="a-quiz-footer">
+                <span class="glyphicon glyphicon-fire pull-right" ng-click="deleteQuiz(e.id)"></span>
+            </div>
+        </div>
+    </a>
+
+
+</div>
+<!--<div class="a-quiz">
+    <div class="a-quiz-title">
+        <span>Hi titlte</span>
+        <span class="glyphicon glyphicon-pencil pull-right"></span>
+    </div>
+    <div class="a-quiz-body">
+        <div class="quiz-body-inner">date created </div>
+        <div class="quiz-body-inner"> 23/11/12</div>&nbsp;
+        <div class="quiz-body-inner">date due</div>
+        <div class="quiz-body-inner"> 23/11/12</div>
+    </div>
+    <div class="a-quiz-footer">
+        <span class="glyphicon glyphicon-folder-open"></span>
+
+        <span class="glyphicon glyphicon-fire pull-right"></span>
+    </div>
+</div>-->

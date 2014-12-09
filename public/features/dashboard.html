@@ -1,0 +1,34 @@
+﻿<div class="dashboard">
+    <div class="row">
+        <div><a href="#logout" ng-click="logout()">Logout</a></div>
+    </div>
+    <div ng-if="type == 'prof'">
+        <div class="dash-nav">
+            <ul class="nav nav-pills nav-justified dash-ul" role="tablist">
+                <li role="presentation" class="dash-li " ><a ui-sref="dashboard.profile({ id : uid })">Profile</a></li>
+
+                <li role="presentation" class="dash-li " ><a ui-sref="dashboard.courses({ id : '{{uid}}' })">Courses</a></li>
+                <li role="presentation" class="dash-li " ><a ui-sref="dashboard.resource({ id : '{{uid}}' })">Search</a></li>
+            </ul>
+        </div>
+    </div>
+    <div ng-if="type == 'stud'">
+        <div class="dash-nav">
+            <ul class="nav nav-pills nav-justified dash-ul" role="tablist">
+                <li role="presentation" class="dash-li " ><a ui-sref="dashboard.stuProfile({ id : uid })">Profile</a></li>
+                <li role="presentation" class="dash-li " ><a ui-sref="dashboard.stuCourses({ id : '{{uid}}' })">Courses</a></li>
+                <li role="presentation" class="dash-li " ><a ui-sref="dashboard.stuResource({ id : '{{uid}}' })">Search</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="dash-body">
+       <!-- <div ng-include src="'../features/dashboard/profilePage.html'"></div>
+        <div ng-include src="'../footer.html'"> </div>-->
+        <div ui-view></div>
+    </div>
+</div>
+
+
+
+

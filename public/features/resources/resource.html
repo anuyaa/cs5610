@@ -1,0 +1,47 @@
+<div class="row">
+    <tabset justified="true">
+        <tab heading="Search Youtube">
+            <br/>
+            <div class="row">
+                <div class="row" style="margin-bottom:1%;">
+                       <input type="text" class="form-control" ng-model="search_input" placeholder="Search for youtube videos"/>
+                       <button ng-click="search()" class="btn btn-primary" >Submit</button>
+                </div>
+
+                 <div class="row">
+                   <div  ng-repeat="element in items" style="margin-top:3%;margin-bottom:3%;">
+                       <div class="panel panel-default">
+                           <div class="panel-heading">{{element.snippet.title}}</div>
+                           <div class="panel-body">
+                               {{element.snippet.description}}
+                           </div>
+                       </div>
+                       <div class="embed-responsive embed-responsive-4by3">
+                           <object width="420" height="315"
+                                   data="http://www.youtube.com/v/{{element.id.videoId}}" class="embed-responsive-item"></object>
+                       </div>
+                   </div>
+                 </div>
+            </div>
+        </tab>
+        <tab heading="Search Books">
+            <br/>
+            <div class="row">
+                <input type="text" class="form-control" ng-model="search.book" placeholder="Search for book " />
+                <button ng-click="searchBook()" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="row">
+                <div class="well-sm" ng-repeat="book in items" >
+                    <div style="margin-bottom:1%;">
+                        <div class="col-md-12"> <span>Title : </span>{{book.Title}}</div>
+                        <div class="col-md-12"> <span >ISBN : {{book.isbn}}</span></div>
+                        <div class="col-md-12 "><span>Description : </span>{{book.Description}} </div>
+                        <div class="col-md-12"><a ng-href="{{$scope.book_detail.Author}}"></a>{{$scope.book_detail.Author}}</div>
+                        <div class="col-md-12"><img ng-src="{{book.Image}}" class="img-thumbnail" ng-model=book_id /></div>
+                        <div><input type="hidden" ng-model="book_id" ng-value="change({{book.ID}})"  /></div>
+                    </div>
+                </div>
+            </div>
+        </tab>
+    </tabset>
+</div>

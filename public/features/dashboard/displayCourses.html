@@ -1,0 +1,51 @@
+﻿<div ng-switch on="selection">
+
+    <div  ng-switch-when="exist">
+
+        <!-- when there are courses -->
+        <div class="row yes-courses">
+            <!-- when there are no courses -->
+            <div class="col-md-3 cleft-panel">
+                <div class="course-list">
+                    <ul class="nav nav-pills nav-stacked addCourseUl" role="tablist">
+                        <li role="presentation" data-ng-click="setAddCourse()" style="text-transform:capitalize;text-align: center;">
+                            <a href="">ADD Course</a></li>
+                        <li data-ng-repeat = "c in allCourses" role="presentation" style="text-transform:capitalize;text-align: center;">
+                            <a href ng-click="getCourseInfo(c)">{{ c.name.toLowerCase() }}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col-md-9 cright-panel">
+
+                <div ng-switch on='addSelection'>
+                    <div ng-switch-when='yes'>
+                        <div ng-include src="'../features/dashboard/addCourse.html'"></div>
+                    </div>
+                    <div ng-switch-when='no'>
+                        <div ui-view >
+                            <!-- The course description and courses quizzes . -->
+                        </div>
+                        <div ng-switch on="template">
+                            <div ng-switch-when="course">
+                                <div ng-include src="'../features/dashboard/course.html'"></div>
+                            </div>
+                            <div ng-switch-when="edit">
+                                <div ng-include src="'../features/dashboard/editCourse.html'"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div  ng-switch-when="not_exist">
+         <div ng-include src="'../features/dashboard/addCourse.html'"></div>
+    </div>
+
+</div>

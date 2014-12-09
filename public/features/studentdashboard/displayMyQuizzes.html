@@ -1,0 +1,81 @@
+<div ng-repeat="e in studentQuizzesForCourse" >
+    <div class="row">
+        <a href=""  ng-click="showMyQuiz(e.id)">
+            <div class="a-quiz" >
+                <div class="a-quiz-title">
+                    <div class="pull-left">
+                        <span class="truncate">{{e.title}}</span>
+                    </div>
+                </div>
+                <div class="a-quiz-body">
+                    <div class="quiz-body-inner">Submitted </div>
+                    <div class="quiz-body-inner">{{ e.last_modified  |  date : mediumDate }}</div>&nbsp;
+                    <div class="quiz-body-inner">date due</div>
+                    <div class="quiz-body-inner"> {{ e.due_date  |  date : mediumDate }}</div>
+                </div>
+                <div class="a-quiz-footer">
+                    <span class="glyphicon glyphicon-edit pull-right" ng-click="showMyQuiz(e.id)"></span>
+                </div>
+            </div>
+        </a>
+        <div class="row">
+            <div ng-show="my_quizzes == 'none'" ></div>
+            <div ng-show="my_quizzes == '{{e.id}}'">
+                <div class="row">
+                    <div class="row">
+                        <span>Your Score : {{e.score}}  out of  {{e.problemArray.length * 5}}</span>
+                    </div>
+                    <div class="row">
+                        <textarea class="form-control" rows="2" disabled="true">Quiz Title : &nbsp; {{e.title}}</textarea>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div ng-repeat="p in e.problemArray">
+
+                            <div class="panel panel-success">
+
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <div class="question" >
+                                            <span class="glyphicon glyphicon-tasks"></span>
+                                            &nbsp;<span >Problem {{p.id}} :</span> &nbsp;<span >{{p.title}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div ng-repeat="o in p.optionArray">
+                                        <div class="option" style="marg">
+                                            <div class="input-group">
+
+                                            <span class="input-group-addon add-option" ng-show="p.correctOptionIndex === o.opt_id-1" style="background-color:green">
+                                                 <input type="{{p.type}}" ng-checked="{{o.is_correct}}"  name="{{p.id}}" disabled="true"/>
+                                            </span>
+                                            <span class="input-group-addon add-option" ng-show="p.correctOptionIndex !== o.opt_id-1" >
+                                                 <input type="{{p.type}}" ng-checked="{{o.is_correct}}"  name="{{p.id}}" disabled="true"/>
+                                            </span>
+
+
+                                                <input type="text" class="form-control" placeholder="{{o.opt_text}}" readonly/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="plaintext">
+                                        Correct Answer : {{p.optionArray[p.correctOptionIndex].opt_text}}<br/>
+                                        My Answer :    {{p.optionArray[p.studentAnswerIndex].opt_text}}
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-warning" ng-click="resetQuiz()">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

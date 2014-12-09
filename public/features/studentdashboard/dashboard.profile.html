@@ -1,0 +1,128 @@
+﻿
+<div class="profile-part">
+    <div class="row">
+
+        <div ng-show="profile == 'show'">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{currentUser.firstname}} {{currentUser.lastname}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3 col-lg-3 " align="center">
+                                    <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+
+                                <div class=" col-md-9 col-lg-9 ">
+                                    <div class="table-responsive">
+                                        <table class="table table-user-information">
+                                            <tbody>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>{{currentUser.firstname}} {{currentUser.lastname}}</td>
+                                            </tr>
+                                            <!--<tr>
+                                                <td>Email</td>
+                                                <td>&nbsp;</td>
+                                            </tr>-->
+                                            <tr>
+                                                <td>Username</td>
+                                                <td>{{currentUser.username}}</td>
+                                            </tr>
+
+                                            <tr>
+                                            <tr>
+                                                <td>Email</td>
+                                                <td><a href="mailto: {{currentUser.email}}"></a>{{currentUser.email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phone Number</td>
+                                                <td>555-4567-890</td>
+                                            </tr>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer" style="min-height:2.1em;padding: 4px 10px;">
+                            <span class="pull-right">
+                                <button class="btn btn-warning" ng-click="editProfile()">Edit</button>
+                                <!--<button class="btn btn-success" ng-click="editProfile">Save</button>-->
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="profile == 'edit'">
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{currentUser.firstname}} {{currentUser.lastname}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3 col-lg-3 " align="center">
+                                    <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+
+                                <div class=" col-md-9 col-lg-9 ">
+                                    <div class="table-responsive">
+                                        <table class="table table-user-information">
+                                            <tbody>
+                                            <tr>
+                                                <td>Firstname</td>
+                                                <td><input type="text" ng-model="user.fname" value="{{currentUser.firstname}}" placeholder="{{currentUser.firstname}}"/> </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Lastname</td>
+                                                <td><input type="text" ng-model="user.lname" value="{{currentUser.lastname}}" placeholder="{{currentUser.lastname}}"/> </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Username</td>
+                                                <td><input type="text" ng-model="user.uname" value="{{currentUser.username}}" placeholder="{{currentUser.username}}"/></td>
+                                            </tr>
+
+                                            <tr>
+                                            <tr>
+                                                <td>Email</td>
+                                                <td><a href="mailto: {{currentUser.email}}"></a>
+                                                    <input type="email" ng-model="user.email" value="{{currentUser.email}}" placeholder="{{currentUser.email}}"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phone Number</td>
+                                                <td><input type="number" ng-model="user.phone" placeholder="777 777 777"/></td>
+                                            </tr>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer" style="min-height:2.1em;padding: 4px 10px;">
+                            <span class="pull-right">
+                                <button class="btn btn-sucess" ng-click="saveProfile()">Save</button>
+                                <!--<button class="btn btn-success" ng-click="editProfile">Save</button>-->
+                            </span>
+                            <span><i> Alphabets and numbers allowed only</i></span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+       

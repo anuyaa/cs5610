@@ -1,0 +1,13 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="add-course">           
+            <div class="course-form">
+                 <input contenteditable="true" type="text" placeholder="Name" ng-model="currentCourse.name" class="form-control" required />
+            </div>
+            <div class="course-form">
+                <textarea contenteditable="true" class="form-control" rows="3" ng-model="currentCourse.description" placeholder="Description" required></textarea>
+            </div>
+            <div class="course-form"><button class="btn btn-primary" ng-click="updateCourse(currentCourse)">Update</button></div>
+        </div>
+    </div>
+</div> 

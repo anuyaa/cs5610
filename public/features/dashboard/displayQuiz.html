@@ -1,0 +1,230 @@
+<div>
+   <!-- <div>
+        current quiz id : {{currentQuiz.id}}
+    </div>-->
+    <div ng-switch on="isQuizSaved">
+
+        <div ng-if="currentQuiz.is_posted == true">
+            <textarea class="form-control" rows="2" disabled="true">{{currentQuiz.title}}</textarea>
+        </div>
+        <br/>
+        <div ng-if="currentQuiz.is_posted == false">
+            <div class="col-md-12">
+                <textarea class="form-control" rows="2" ng-model="currentQuiz.title" placeholder="Add Title for the quiz."></textarea>
+            </div>
+            <br/><hr/>
+             <div class="col-md-12">
+                <button class="btn btn-primary" >
+                    <div dropdown-select="ddSelectOptions"
+                         dropdown-model="ddSelectSelected"
+                         dropdown-item-label="text"
+                         dropdown-onchange="createProblem(selected)">
+                    </div>
+                </button>
+            </div>
+        </div>
+        <!-- drop down ends here-->
+
+
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <!-- If not posted and want to add a problem in a quiz.
+             On click of add problem, show this div. -->
+        <div ng-if="currentQuiz.is_posted == false">
+            <div ng-show="divAddProblem">
+                <div class="panel panel-success">
+
+                    <div class="panel-heading">
+                        <div>
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-success btn-sm "
+                                        ng-click="addOptionsToProblem()">ADD OPTION</button>
+                            </div>
+                            <div class="panel-title">
+                                <div class="question" contenteditable="true">
+                                    <span class="glyphicon glyphicon-tasks"></span>
+                                    &nbsp;
+                                    <input ng-model="newProblem.title"  placeholder="Add Question here." ng-style="titleStyleErr" ng-keypress="titleStyleErr = {}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+                             <div ng-show="optionErr == 'newProbErr'" style="color:red">
+                                 <span> Please add options to add the question.</span>
+                             </div>
+                             <div ng-repeat="o in newProblem.optionArr" class="input-group" style="margin-bottom:3px">
+                                <span class="input-group-addon add-option">
+                                     <input type="{{newProblem.prob_type}}"  ng-checked="o.is_correct"  name="nProblem" />
+                                </span>
+                                 <input type="text" class="form-control" placeholder="{{o.opt_text}}" />
+                                 <span class="input-group-addon" ng-click="removeThisOptionfromProblem(o.opt_id)">
+                                        <span class="glyphicon glyphicon-fire "></span>
+                                 </span>
+                            </div>
+
+                            <div ng-show="newProblemOptionDiv">
+                                <div class="option" style="margin-bottom: 3px">
+                                    <div class="input-group">
+                                        <span class="input-group-addon add-option">
+                                            <input type="{{newProblem.prob_type}}" ng-model="newProblem.correctOption" ng-value="true" ng-change="setRadioValue(true)" name="nProblem" />
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Add option name" ng-model="newProblem.newOption.optText"/>
+                                        <span class="input-group-addon remove-radio-opt" ng-click="addThisOptionToProblem()">
+                                                <span class="glyphicon glyphicon-ok " ></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+
+                    <div class="panel-footer">
+                        <div ng-if="currentQuiz.is_posted == false">
+                            <div class="pull-right">
+                                <button class="btn btn-success btn-sm  add-sel" ng-click="addNewProblem()">ADD PROBLEM </button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <!-- Problems in this quiz. -->
+            <div ng-repeat="p in currentQuiz.problemArray">
+
+                <div class="panel panel-success">
+
+                    <div class="panel-heading">
+                        <div ng-if="currentQuiz.is_posted == false">
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-success btn-sm "
+                                        ng-click="addOptions(p.id)">ADD OPTION</button>
+                            </div>
+                            <div class="panel-title">
+                                <div class="question" contenteditable="true">
+                                    <span class="glyphicon glyphicon-tasks"></span>
+                                    &nbsp;<input ng-model="p.title"  value="{{p.title}}" placeholder="{{p.title}}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="currentQuiz.is_posted == true">
+                            <div class="panel-title">
+                                <div class="question" >
+                                    <span class="glyphicon glyphicon-tasks"></span>
+                                    &nbsp;<span >{{p.title}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div ng-show="optionErr == '{{p.id}}'" style="color:red">
+                            <span> Please add options to add the question.</span>
+                        </div>
+                        <div ng-if="currentQuiz.is_posted == true">
+                            <div ng-repeat="o in p.optionArray">
+                                <div class="option" style="margin-bottom: 3px;">
+                                    <div class="input-group">
+                                        <span class="input-group-addon add-option">
+                                            <input type="{{p.type}}" ng-checked="{{o.is_correct}}"  name="{{p.id}}" disabled="true"/>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="{{o.opt_text}}" readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="currentQuiz.is_posted == false">
+                            <div ng-repeat="o in p.optionArray">
+                                <div class="option" style="margin-bottom:3px">
+                                    <div class="input-group">
+                                        <span class="input-group-addon add-option">
+                                            <input type="{{p.type}}" ng-checked="{{o.is_correct}}" name="{{p.id}}">
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="{{o.opt_text}}"/>
+                                        <span class="input-group-addon" ng-click="removeOption(p.id,o.opt_id)">
+                                            <span class="glyphicon glyphicon-fire "></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="currentQuiz.is_posted == false">
+                            <div ng-show="createOptionDiv == '{{p.id}}'">
+                                <div class="option" style="margin-bottom: 3px">
+                                    <div class="input-group">
+                                        <span class="input-group-addon add-option">
+                                            <input type="{{p.type}}"  ng-model="newOption.isCorrect" ng-value="true" name="{{p.id}}">
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Add option name" ng-model="newOption.optText"/>
+                                        <span class="input-group-addon remove-radio-opt" ng-click="addThisOption(p.id)">
+                                                <span class="glyphicon glyphicon-ok " ></span>
+                                         </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="panel-footer">
+                        <div ng-if="currentQuiz.is_posted == false">
+                            <div class="pull-right">
+                                <button class="btn btn-danger btn-sm  del-sel" ng-click="removeProblem(p.id)" >DELETE </button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div ng-switch-when="yes" class="col-md-12">
+            <button class="btn btn-warning" ng-click="deleteQuiz(currentQuiz.id)">Delete</button>
+            <div class="row">
+                <span>Date Posted :</span> &nbsp; <span>{{currentQuiz.last_modified | date : mediumDate}}</span>
+            </div>
+        </div>
+        <div ng-switch-when="no">
+            <!-- date picker starts here. -->
+            <div class="row">
+                <div class="col-md-12">
+                    <span>Quiz Due Date : </span>
+
+                    <div class="input-group">
+                          <input type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="duedt.dt" is-open="mydp.opened" min-date="minDate" max-date="'2015-06-22'"
+                               datepicker-options="dateOptions"
+                               date-disabled="disabled(date, mode)"
+                               ng-required="true" close-text="Close" />
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default"
+                                    ng-click="open($event)">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                          </span>
+                    </div>
+                </div>
+            </div>
+            <!-- date picker ends here. -->
+
+            <button class="btn btn-warning" ng-click="saveQuiz()">Save</button>
+            <button class="btn btn-warning" ng-click="saveNPostQuiz()">Save and Post</button>
+        </div>
+
+    </div>
+</div>

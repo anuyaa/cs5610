@@ -1,0 +1,67 @@
+<div ng-repeat="e in allQuizzesForCourse" >
+    <div class="row">
+        <a href=""  ng-click="takeNewQuiz(e)">
+            <div class="a-quiz" >
+                <div class="a-quiz-title">
+                    <div class="pull-left">
+                        <span class="truncate">{{e.quiz.title}}</span>
+                    </div>
+                </div>
+                <div class="a-quiz-body">
+                    <div class="quiz-body-inner">date created </div>
+                    <div class="quiz-body-inner">{{ e.quiz.last_modified  |  date : mediumDate }}</div>&nbsp;
+                    <div class="quiz-body-inner">date due</div>
+                    <div class="quiz-body-inner">{{ e.quiz.due_date  |  date : mediumDate }}</div>
+                </div>
+                <div class="a-quiz-footer">
+                    <span class="glyphicon glyphicon-edit pull-right" ng-click="takeNewQuiz(e)"></span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="row">
+        <div ng-show="takeQuiz == 'none'" ></div>
+        <div ng-show="takeQuiz == '{{e.id}}'">
+            <div class="row">
+                <div class="row">
+                    <textarea class="form-control" rows="2" disabled="true">Quiz Title : {{currentQuiz.quiz.title}}</textarea>
+                </div>
+                <br/>
+                <div class="row">
+                    <div ng-repeat="p in currentQuiz.quiz.problemArray">
+
+                        <div class="panel panel-success">
+
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <div class="question" >
+                                        <span class="glyphicon glyphicon-tasks"></span>
+                                        &nbsp;<span >Problem {{p.id }}</span>&nbsp;<span >{{p.title}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div ng-repeat="o in p.optionArray">
+                                    <input type="hidden" ng-model="p.id" value="{{p.id}}"/>
+                                    <div class="option" style="margin-bottom: 3px;">
+                                        <div class="input-group">
+                                            <span class="input-group-addon add-option"><!--ng-model="$parent.setOption"  ng-value="{{p.id}}"-->
+                                                <input type="{{p.type}}"  ng-click="setOption(p.id,o.opt_id)" name="{{p.id}}"  />
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="{{o.opt_text}}" readonly/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-warning" ng-click="submitQuiz()">Submit</button>
+                        <button class="btn btn-warning" ng-click="resetQuiz()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
