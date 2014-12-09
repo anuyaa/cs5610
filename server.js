@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 //app.use(app.router);
 // mongodbConnectionString is name of database we want to use
-var mongodbConnectionString = process.env.OPENSHIFT_MONGODB_DB_URL + "quizera";
+var mongodbConnectionString = "mongodb://admin:zJ4i2QSgePT5@127.4.113.2:27017/" + "quizera";
 if(typeof process.env.OPENSHIFT_MONGODB_DB_URL == "undefined"){
 	mongodbConnectionString = "quizera";
 }

@@ -220,14 +220,15 @@ app.controller("CourseController", ["$scope", "$http","$state", "$location", "Co
             console.log("create problem of type:" + $scope.ddSelectSelected.value);
             $scope.divAddProblem = true;                  /*  show create question template */
             /* on the basis of drop down value selected assign current problem : prob_type  */
-            if ($scope.ddSelectSelected.value == 'mcq') {
+           /* if ($scope.ddSelectSelected.value == 'mcq') {
                 $scope.newProblem.prob_type = "radio";
             } else if ($scope.ddSelectSelected.value == 'maq') {
                 $scope.newProblem.prob_type = "check";
             } else if ($scope.currentProblem.prob_type = "fb") {
                 $scope.newProblem.prob_type = "text";
-            }
+            }*/
 
+            $scope.newProblem.prob_type = "radio";
             $scope.optionErr = 'newProbErr';
         }
 
@@ -316,6 +317,7 @@ app.controller("CourseController", ["$scope", "$http","$state", "$location", "Co
       //  $scope.tempProblemArray = [];  // this array is used only if it's a completely new quiz
         $scope.optionErr = null;
         $scope.titleStyleErr = {};
+        $scope.showSaveNPost = 'no';  // show save an due date  options
         $scope.addNewProblem = function(){
             console.log("inside adding new problem to quiz.");
             // make some checks
@@ -372,6 +374,9 @@ app.controller("CourseController", ["$scope", "$http","$state", "$location", "Co
                                 $scope.newProblem = {};
                                 $scope.newProblem.optionArr = [];
                                 $scope.newProblem.newOption = {};
+                                console.log("showing save n post buttin");
+                                $scope.showSaveNPost = 'yes';  // show save an due date  options
+                                console.log($scope.showSaveNPost);
                             }
 
                         }else{
@@ -553,6 +558,7 @@ app.controller("CourseController", ["$scope", "$http","$state", "$location", "Co
         }
 
 
+       // adding prob to alreadt existing quiz
         $scope.addProblem = function () {
 
             var prob = $scope.currentProblem;
@@ -583,6 +589,7 @@ app.controller("CourseController", ["$scope", "$http","$state", "$location", "Co
                 $scope.problemArray.push(push_prob);     // push current prob, with atleast one correct option.
                 $scope.problemDiv = false;                  /*  hide create question template */
                 console.log($scope.currentCourse);
+
             }
 
 

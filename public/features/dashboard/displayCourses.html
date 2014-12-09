@@ -8,10 +8,13 @@
             <div class="col-md-3 cleft-panel">
                 <div class="course-list">
                     <ul class="nav nav-pills nav-stacked addCourseUl" role="tablist">
-                        <li role="presentation" data-ng-click="setAddCourse()" style="text-transform:capitalize;text-align: center;">
+                        <li role="presentation" data-ng-click="setAddCourse()" class="course_li">
                             <a href="">ADD Course</a></li>
-                        <li data-ng-repeat = "c in allCourses" role="presentation" style="text-transform:capitalize;text-align: center;">
-                            <a href ng-click="getCourseInfo(c)">{{ c.name.toLowerCase() }}</a></li>
+                        <li data-ng-repeat = "c in allCourses" role="presentation" class="course_li">
+                            <a href ng-click="getCourseInfo(c)">{{ c.name.toLowerCase() }}
+                                <span class="glyphicon glyphicon-fire" style="float:right;" ng-click="deleteCourse(c)"></span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

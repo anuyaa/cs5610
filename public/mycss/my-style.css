@@ -10,18 +10,26 @@ body {
 
 
 .container {
-
     min-height: 660px;
     background-image: url(/design/images/subtle1507.png);
     background-position: inherit;
     background-repeat: repeat;
     background-attachment: fixed;
-    background-color: rgb(32, 32, 18);
-    color : #D17104;
+    background-color: rgb(244, 244, 244);
+    color: #020A30;
     font-stretch: extra-expanded;
     font-weight: 300;
     padding-top: 2%;
 }
+
+.main-container {
+    background-color: rgb(237, 237, 236);
+    z-index: 10;
+    opacity: 0.8;
+    min-height: 600px;
+    border-radius: 2px 2px 2px 2px;
+}
+
 .loginDiv{
     margin: 0px auto;
     padding-left: 20%;
@@ -39,25 +47,25 @@ body {
 
     text-transform:capitalize;
     text-align: center;
-    background-color: lightgoldenrodyellow;
+    background-color: rgb(244, 244, 244);
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
-    border: 2px solid  #9F704C;
+    border: 2px solid #FFFFFF;
 }
 
 .dash-li :hover{
-    background-color: #9F704C;
+    background-color: rgb(244, 244, 244);
 
 }
 .course_li{
     text-transform:capitalize;
     text-align: center;
-    background-color: lightgoldenrodyellow;
+    background-color: rgb(244, 244, 244);
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
-    border: 2px solid  #9F704C;
+    border: 2px solid #FFFFFF;
 
 
 }
@@ -73,7 +81,7 @@ body {
 
 }
 
-.glyphicon-fire :hover{
+.glyphicon-fire {
     color: red;
    /* opacity: 0.5;
     -webkit-transform: scale(1.05,1.07) ;
@@ -91,7 +99,7 @@ body {
 .glyphicon-folder-open:hover {
     color: #07A355;
 }
-.glyphicon-pencil:hover {
+.glyphicon-pencil  {
     color: #E3C714;
 }
 
@@ -146,7 +154,7 @@ a :hover{
     margin-bottom:4%;
 }
 .course-info {
-    background-color: rgb(65,62,74);
+    background-color: rgb(231, 228, 240);
 }
 
 .quiz-button{
@@ -158,23 +166,23 @@ a :hover{
     width: 190px;
     height: 220px;
     padding: 5px;
-    border: 0.5em ridge rgb(250, 250, 210);
+    border: 0.5em ridge rgb(237, 237, 236);
     margin-right: 1%;
     margin-bottom: 2%;
     float: left;
-    background-color: #DFB888;
+    background-color: #F6F6F6;
 }
 
 .a-quiz-title {
     width: 100%;
     height: 15.68%;
-    border: 3px ridge rgb(247,228,190);
+    border: 0.5em ridge rgb(237, 237, 236);
     margin-bottom: 1px;
 }
 .a-quiz-body {
     width: 100%;
     height: 75.9%;
-    border: 3px ridge rgb(247,228,190);
+    border: 0.5em ridge rgb(237, 237, 236);
     margin-bottom: 1px;
 }
 
@@ -192,4 +200,10 @@ a :hover{
 
 .course-form{
     margin-bottom:2%;
+}
+
+.logout{
+    float: right;
+    margin-right: 2em;
+    margin-bottom: 1em;
 }

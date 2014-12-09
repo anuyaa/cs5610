@@ -4,15 +4,25 @@
     </div>-->
     <div ng-switch on="isQuizSaved">
 
-        <div ng-if="currentQuiz.is_posted == true">
-            <textarea class="form-control" rows="2" disabled="true">{{currentQuiz.title}}</textarea>
+
+        <div ng-if="currentQuiz.is_posted == true" class="col-md-10">
+            <textarea class="form-control" rows="2" disabled="true">Title : {{currentQuiz.title}}</textarea>&nbsp;&nbsp;
+            <!--<span class="glyphicon glyphicon-fire" ng-click="deleteQuiz(currentQuiz.id)"></span>-->
+            <button class="btn btn-warning" ng-click="deleteQuiz(currentQuiz.id)">Delete</button>
         </div>
         <br/>
         <div ng-if="currentQuiz.is_posted == false">
             <div class="col-md-12">
-                <textarea class="form-control" rows="2" ng-model="currentQuiz.title" placeholder="Add Title for the quiz."></textarea>
+                <div class="col-md-10">
+                    <textarea class="form-control" rows="2" ng-model="currentQuiz.title" placeholder="Add Title for the quiz."></textarea>
+                </div>
+                <div class="col-md-2">
+                    <button ng-model="ddSelectSelected" ng-click="createProblem()">Add Problem</button>
+                </div>
             </div>
-            <br/><hr/>
+            <br/>
+        </div>
+        <!--<hr/>
              <div class="col-md-12">
                 <button class="btn btn-primary" >
                     <div dropdown-select="ddSelectOptions"
@@ -21,48 +31,44 @@
                          dropdown-onchange="createProblem(selected)">
                     </div>
                 </button>
-            </div>
-        </div>
+            </div>-->
         <!-- drop down ends here-->
 
 
-        <hr/>
-        <hr/>
-        <hr/>
-        <hr/>
-        <hr/>
+       <br/>
         <!-- If not posted and want to add a problem in a quiz.
              On click of add problem, show this div. -->
-        <div ng-if="currentQuiz.is_posted == false">
-            <div ng-show="divAddProblem">
-                <div class="panel panel-success">
+        <div class="col-md-12">
+            <div ng-if="currentQuiz.is_posted == false">
+                <div ng-show="divAddProblem">
+                    <div class="panel panel-success">
 
-                    <div class="panel-heading">
-                        <div>
-                            <div class="btn-group pull-right">
-                                <button class="btn btn-success btn-sm "
-                                        ng-click="addOptionsToProblem()">ADD OPTION</button>
-                            </div>
-                            <div class="panel-title">
-                                <div class="question" contenteditable="true">
-                                    <span class="glyphicon glyphicon-tasks"></span>
-                                    &nbsp;
-                                    <input ng-model="newProblem.title"  placeholder="Add Question here." ng-style="titleStyleErr" ng-keypress="titleStyleErr = {}"/>
+                        <div class="panel-heading">
+                            <div>
+                                <div class="btn-group pull-right">
+                                    <button class="btn btn-success btn-sm "
+                                            ng-click="addOptionsToProblem()">ADD OPTION</button>
+                                </div>
+                                <div class="panel-title">
+                                    <div class="question" contenteditable="true">
+                                        <span class="glyphicon glyphicon-tasks"></span>
+                                        &nbsp;
+                                        <input ng-model="newProblem.title"  placeholder="Add Question here." ng-style="titleStyleErr" ng-keypress="titleStyleErr = {}"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="panel-body">
+                        <div class="panel-body">
 
-                             <div ng-show="optionErr == 'newProbErr'" style="color:red">
-                                 <span> Please add options to add the question.</span>
-                             </div>
-                             <div ng-repeat="o in newProblem.optionArr" class="input-group" style="margin-bottom:3px">
+                            <div ng-show="optionErr == 'newProbErr'" style="color:red">
+                                <span> Please add options to add the question.</span>
+                            </div>
+                            <div ng-repeat="o in newProblem.optionArr" class="input-group" style="margin-bottom:3px">
                                 <span class="input-group-addon add-option">
                                      <input type="{{newProblem.prob_type}}"  ng-checked="o.is_correct"  name="nProblem" />
                                 </span>
-                                 <input type="text" class="form-control" placeholder="{{o.opt_text}}" />
+                                <input type="text" class="form-control" placeholder="{{o.opt_text}}" />
                                  <span class="input-group-addon" ng-click="removeThisOptionfromProblem(o.opt_id)">
                                         <span class="glyphicon glyphicon-fire "></span>
                                  </span>
@@ -82,24 +88,22 @@
                                 </div>
                             </div>
 
-                    </div>
-
-                    <div class="panel-footer">
-                        <div ng-if="currentQuiz.is_posted == false">
-                            <div class="pull-right">
-                                <button class="btn btn-success btn-sm  add-sel" ng-click="addNewProblem()">ADD PROBLEM </button>
-                            </div>
-                            <div class="clearfix"></div>
                         </div>
-                    </div>
 
+                        <div class="panel-footer">
+                            <div ng-if="currentQuiz.is_posted == false">
+                                <div class="pull-right">
+                                    <button class="btn btn-success btn-sm  add-sel" ng-click="addNewProblem()">ADD PROBLEM </button>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
 
-
-        <div>
-            <!-- Problems in this quiz. -->
+            <!--Problems in this quiz-->
             <div ng-repeat="p in currentQuiz.problemArray">
 
                 <div class="panel panel-success">
@@ -113,6 +117,7 @@
                             <div class="panel-title">
                                 <div class="question" contenteditable="true">
                                     <span class="glyphicon glyphicon-tasks"></span>
+                                    <span class="plaintext"> Problem {{p.id}} :</span>
                                     &nbsp;<input ng-model="p.title"  value="{{p.title}}" placeholder="{{p.title}}"/>
                                 </div>
                             </div>
@@ -193,10 +198,16 @@
         </div>
 
 
+
+
+
+
         <div ng-switch-when="yes" class="col-md-12">
-            <button class="btn btn-warning" ng-click="deleteQuiz(currentQuiz.id)">Delete</button>
-            <div class="row">
+            <div class="col-md-4">
                 <span>Date Posted :</span> &nbsp; <span>{{currentQuiz.last_modified | date : mediumDate}}</span>
+            </div>
+            <div class="col-md-4">
+                <span>Date Due :</span> &nbsp; <span>{{currentQuiz.due_date | date : mediumDate}}</span>
             </div>
         </div>
         <div ng-switch-when="no">

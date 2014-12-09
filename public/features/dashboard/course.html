@@ -2,17 +2,16 @@
 
     <div class="course-top">
         <div class="row">
-            <div class="col-md-6 course-name "  > {{currentCourse.name}} </div>
-            <div class="col-md-6 pull-right quiz-button">
+            <div class="col-md-9 course-name "  >
+                <span class="plaintext">{{currentCourse.name}}</span> &nbsp;
+                <span class="glyphicon glyphicon-pencil" ng-click="editCourse(currentCourse)"></span>
+                <br/>
+                <span class="plaintext">Description : </span>{{currentCourse.description}}
+             </div>
+            <div class="col-md-3 pull-right quiz-button">
                 <button class="btn btn-primary" ng-click="createQuiz(currentCourse)">create Quiz</button>
-                <button class="btn btn-primary" ng-click="deleteCourse(currentCourse)">Delete Course</button>
-                <button class="btn btn-primary" ng-click="editCourse(currentCourse)">Edit Course</button>
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 course-info">
-                 {{currentCourse.description}}
+               <!-- <button class="btn btn-primary" ng-click="deleteCourse(currentCourse)">Delete Course</button>-->
+               <!-- <button class="btn btn-primary" ng-click="editCourse(currentCourse)">Edit Course</button>-->
             </div>
         </div>
     </div>

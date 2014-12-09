@@ -1,21 +1,25 @@
 <div class="row">
     <div class="row">
-        <div class="col-md-12"> *
-            <span>Create a quiz by adding problems. To add a problem first select problem type.</span><br/>
-            <div class="col-md-12">
+        <div class="col-md-12">
+            <span class="plaintext">* Create a quiz by adding problems.</span>
+            <br/>
+            <div class="col-md-10">
                 <textarea class="form-control" rows="2" ng-model="currentQuiz.title" placeholder="Add Title for the quiz."></textarea>
+            </div>
+            <div class="col-md-2">
+                <button ng-model="ddSelectSelected" ng-click="createProblem()">Add Problem</button>
             </div>
         </div>
 
         <div class="col-md-12">
-            <button class="btn btn-primary" >
-
+            <!--<button class="btn btn-primary" >
                 <div dropdown-select="ddSelectOptions"
                      dropdown-model="ddSelectSelected"
                      dropdown-item-label="text"
                      dropdown-onchange="createProblem(selected)">
                 </div>
-            </button>
+            </button>-->
+
         </div>
     </div>
     <br/><br/>
@@ -138,38 +142,35 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
 
-            <div class="row">
-                    <div class="col-md-12">
-                        <span>Set due Date for quiz : </span>
+            <div ng-show="showSaveNPost == 'yes'">
 
-                        <div class="input-group">
-                            <input type="text" class="form-control" datepicker-popup="{{format}}"
-                                   ng-model="duedt.dt" is-open="mydp.opened" min-date="minDate" max-date="'2015-06-22'"
-                                   datepicker-options="dateOptions"
-                                   date-disabled="disabled(date, mode)"
-                                   ng-required="true" close-text="Close" />
-                          <span class="input-group-btn">
-                            <button type="button" class="btn btn-default"
-                                    ng-click="open($event)">
-                                <i class="glyphicon glyphicon-calendar"></i>
-                            </button>
-                          </span>
-                        </div>
+                    <div class="col-md-3">
+                        <span class="plaintext">Set due Date for quiz : </span>
                     </div>
+                    <div class="input-group col-md-8">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="duedt.dt" is-open="mydp.opened" min-date="minDate" max-date="'2015-06-22'"
+                               datepicker-options="dateOptions"
+                               date-disabled="disabled(date, mode)"
+                               ng-required="true" close-text="Close" />
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default"
+                                ng-click="open($event)">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                      </span>
+                    </div>
+                    <br/>
 
-                <!-- date picker ends here. -->
-
-                <button class="btn btn-warning" ng-click="saveQuiz()">Save</button>
-                <button class="btn btn-warning" ng-click="saveNPostQuiz()">Save and Post</button>
-
+                    <!-- date picker ends here. -->
+                    <div class="col-md-12">
+                        <button class="btn btn-warning" ng-click="saveQuiz()">Save</button>&nbsp;&nbsp;
+                        <button class="btn btn-warning" ng-click="saveNPostQuiz()">Save and Post</button>
+                    </div>
             </div>
-
-
-
 
         </div>
     </div>
