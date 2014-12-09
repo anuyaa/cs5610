@@ -1,7 +1,7 @@
 /**
  * Created by Ankita on 11/13/2014.
  */
-// This service is used for professor
+
 app.factory("CourseService", function ($http,$location,$state) {
 
     var user_id ;
@@ -10,20 +10,10 @@ app.factory("CourseService", function ($http,$location,$state) {
         $http.post("/courses", cinfo).success(function (data, status, headers, config) {
             // this callback will be called asynchronously
             // when the response is available
-
             console.log("After course create inside service ");
             console.log(status);
             console.log(data);
             callback(data, status, headers, config);
-           /* if(data.error == 0){
-                console.log("courses exists 2",data.info);
-                $state.go("dashboard.courses",{id : data.info});
-            }else{
-                console.log("cannot create course. ");
-                callback(data, status, headers, config);
-            }*/
-
-
 
         }). error(function (data, status, headers, config) {
                 // called asynchronously if an error occurs
