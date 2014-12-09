@@ -1,6 +1,14 @@
 ﻿module.exports = function (app, db, mongojs) {
 
-    
+    app.get("/getCollections",function(req,res){
+
+        db.professor.find( function (err, doc) {
+
+                result = { "error": 0, "info": doc };
+                res.json(result);
+            });
+         });
+    });
     app.post("/createUser", function (req, res) {
         var new_user = req.body;
         console.log("new user " + new_user);
