@@ -19,13 +19,13 @@ app.use(bodyParser.json());
 
 //app.use(app.router);
 // mongodbConnectionString is name of database we want to use
-var mongodbConnectionString = "mongodb://admin:zJ4i2QSgePT5@127.4.113.2:27017/" + "quizera";
+var mongodbConnectionString = "mongodb://admin:zJ4i2QSgePT5@127.4.113.2:27017/" + "cs5610";
 if(typeof process.env.OPENSHIFT_MONGODB_DB_URL == "undefined"){
 	mongodbConnectionString = "quizera";
 }
 
 console.log("db connection string . "+mongodbConnectionString);
-var db = mongojs(mongodbConnectionString,["professor","student","courses"]);
+var db = mongojs(mongodbConnectionString,["professor","student","courses","quiz"]);
 
 var applications = require('./public/server/sub_server.js');
 
