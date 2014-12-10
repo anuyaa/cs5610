@@ -680,7 +680,7 @@ app.controller("CourseController", ["$scope", "$http","$state", "$location", "Co
             }
 
             $scope.currentQuiz = {};
-
+            $scope.showSaveNPost = 'no';  // show save an due date  options
             getAllQuizzes($scope.currentCourse); // update the quiz array
 
         }
@@ -832,7 +832,7 @@ app.controller("CourseController", ["$scope", "$http","$state", "$location", "Co
             }
 
             $scope.currentQuiz = {};
-
+            $scope.showSaveNPost = 'no';  // show save an due date  options
             getAllQuizzes($scope.currentCourse); // update the quiz array
 
         }

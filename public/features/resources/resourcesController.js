@@ -19,32 +19,32 @@ app.controller("ResourceController", ["$scope", "$http","$state", "$location", "
 
         var keyword = $scope.search_input;
         var apiKey = "AIzaSyBNUGULhhyJU6mzXWPaiJUrsNbp-pprKAQ";
-        var url = "https://www.googleapis.com/youtube/v3/search?key="+apiKey;
-        url = url + "&part=snippet&mine=true&type=video&videoDefinition=high&videoCaption=closedCaption&max-results=50&q=";
+        var vurl = "https://www.googleapis.com/youtube/v3/search?key="+apiKey;
+        vurl = vurl + "&part=snippet&mine=true&type=video&videoDefinition=high&videoCaption=closedCaption&max-results=50&q=";
 
         console.log("printing url ");
-        console.log(url);
+        console.log(vurl);
 
         $scope.search = function () {
 
             var search_for = $scope.search_input;
-            url = url + search_for;
-            console.log(url);
-            getVideos(url);
+            vurl = vurl + search_for;
+            console.log(vurl);
+            getVideos(vurl);
         }
 
-        function getVideos(url) {
-            $http.get(url).success(function (response) {
+        function getVideos(vurl) {
+            $http.get(vurl).success(function (response) {
                 console.log(response);
-                $scope.items = response.items;
-                console.log($scope.items[0].snippet);
+                $scope.vitems = response.items;
+                console.log($scope.vitems[0].snippet);
             });
 
         }
 
 
         $scope.searchBook = function () {
-            url = "http://it-ebooks-api.info/v1/";
+            var burl = "http://it-ebooks-api.info/v1/";
             var userInput = $scope.search.book;
             //  var bfilter = $scope.search.filter;
             //var bfilter = document.getElementByName("ftype").value;
@@ -52,35 +52,35 @@ app.controller("ResourceController", ["$scope", "$http","$state", "$location", "
             // var bfilter = $('input:radio[name=ftype]').val();
             var bfilter = 'title';
             console.log(userInput + " - " + bfilter);
-            url = url + "search/" + userInput ;
-            console.log(url);
-            getBook(url);
+            burl = burl + "search/" + userInput ;
+            console.log(burl);
+            getBook(burl);
         }
 
 
         $scope.change = function (id) {
-            url = "http://it-ebooks-api.info/v1/";
+            var burl = "http://it-ebooks-api.info/v1/";
             console.log("Book ID : " + id);
-            url = url + "/book/" + id;
-            console.log(url);
+            burl = burl + "/book/" + id;
+            console.log(burl);
             $http.get(url).success(function (req, res) {
                 $scope.book_detail = res;
             });
         }
 
-        function getBook( url) {
-            $http.get(url).success(function (response) {
+        function getBook( burl) {
+            $http.get(burl).success(function (response) {
                 //console.log(response.Books[0]);
-                $scope.items = response.Books;
+                $scope.bitems = response.Books;
 
             });
 
         }
 
-        function getBookDetail( url) {
-            $http.get(url).success(function (response) {
+        function getBookDetail( burl) {
+            $http.get(burl).success(function (response) {
                 console.log(response.Books[0]);
-                $scope.items = response.Books;
+                $scope.bitems = response.Books;
 
             });
         }

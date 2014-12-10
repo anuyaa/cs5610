@@ -35,19 +35,19 @@
                     <tabset justified="true">
                         <tab heading="My Quizzes">
                             <br/>
-                            <span class="plaintext">Quizzes submitted by me. </span>
+                            <span class="plaintext">Quizzes submitted by me in {{currentCourse.name}} course. </span>
                             <br/>
                             <div ng-include src="'../features/studentdashboard/displayMyQuizzes.html'"></div>
                         </tab>
                         <tab heading="Available Quizzes">
                             <br/>
-                            <span class="plaintext">Quizzes available course. </span>
+                            <span class="plaintext">Quizzes available in {{currentCourse.name}} course</span>
                             <br/>
                             <div ng-include src="'../features/studentdashboard/displayAvailableQuizzes.html'"></div>
                         </tab>
                         <tab heading="Old Quizzes">
                             <br/>
-                            <span class="plaintext">Quizzes posted previously in this course. </span>
+                            <span class="plaintext">Quizzes posted previously in {{currentCourse.name}} course. </span>
                             <br/>
                             <div ng-include src="'../features/studentdashboard/displayOldQuizzes.html'"></div>
                         </tab>

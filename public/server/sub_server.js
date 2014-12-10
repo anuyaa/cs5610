@@ -343,10 +343,11 @@
             console.log("courses exist : "+exist);
 
             var c = { "prof_id" : uid, "name" : course_name , "description" : course_desc,"studentArray" : [], "quizArray" : []};
+           /* var c = { "prof_id" : uid, "name" : course_name , "description" : course_desc};*/
             db.courses.insert(c, function(error, i_docs){
                     console.log("inserted in course.");
                     console.log(i_docs);
-                    if(i_docs){
+                    if(error == null){
                         console.log("inserted in course collection.");
                         result = { "error": 0 , "info" : uid  } ;
                         res.json(result);
@@ -359,8 +360,8 @@
 
             });
 
-            result = { "error": 1 , "info" : "course_exist"  } ;
-            res.json(result);
+           /* result = { "error": 1 , "info" : "course_exist"  } ;
+            res.json(result);*/
 
 
 

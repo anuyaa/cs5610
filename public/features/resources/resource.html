@@ -10,17 +10,24 @@
                     <button ng-click="search()" class="btn btn-primary" >Submit</button>
                 </div>
                  <div class="col-md-12">
-                   <div  ng-repeat="element in items" style="margin-top:3%;margin-bottom:3%;">
+                   <div  ng-repeat="element in vitems" style="margin-top:3%;margin-bottom:3%;">
                        <div class="panel panel-default">
                            <div class="panel-heading">{{element.snippet.title}}</div>
                            <div class="panel-body">
                                {{element.snippet.description}}
                            </div>
                        </div>
-                       <div class="embed-responsive embed-responsive-4by3">
+                       <div>
+                           <object width="425" height="350">
+                               <param name="movie" value="http://www.youtube.com/v/{{element.id.videoId}}" />
+                               <embed src="http://www.youtube.com/v/tIBxavsiHzM"
+                                      type="application/x-shockwave-flash" width="425" height="350" />
+                           </object>
+                       </div>
+                      <!-- <div class="embed-responsive embed-responsive-4by3">
                            <object width="420" height="315"
                                    data="http://www.youtube.com/v/{{element.id.videoId}}" class="embed-responsive-item"></object>
-                       </div>
+                       </div>-->
                    </div>
                  </div>
             </div>
@@ -34,7 +41,7 @@
                 <button ng-click="searchBook()" class="btn btn-primary">Submit</button>
             </div>
             <div class="col-md-12">
-                <div class="well-sm" ng-repeat="book in items" >
+                <div class="well-sm" ng-repeat="book in bitems" >
                     <div style="margin-bottom:1%;">
                         <div class="col-md-12"> <span>Title : </span>{{book.Title}}</div>
                         <div class="col-md-12"> <span >ISBN : {{book.isbn}}</span></div>

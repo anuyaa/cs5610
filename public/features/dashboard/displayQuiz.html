@@ -5,12 +5,14 @@
     <div ng-switch on="isQuizSaved">
 
 
-        <div ng-if="currentQuiz.is_posted == true" class="col-md-10">
-            <textarea class="form-control" rows="2" disabled="true">Title : {{currentQuiz.title}}</textarea>&nbsp;&nbsp;
-            <!--<span class="glyphicon glyphicon-fire" ng-click="deleteQuiz(currentQuiz.id)"></span>-->
-            <button class="btn btn-warning" ng-click="deleteQuiz(currentQuiz.id)">Delete</button>
+        <div ng-if="currentQuiz.is_posted == true" class="col-md-12">
+            <div class="col-md-10">
+                <textarea class="form-control" rows="2" disabled="true">Title : {{currentQuiz.title}}</textarea></div>
+            <div class="col-md-2">
+                <button class="btn btn-warning" ng-click="deleteQuiz(currentQuiz.id)">Delete</button>
+            </div>
         </div>
-        <br/>
+
         <div ng-if="currentQuiz.is_posted == false">
             <div class="col-md-12">
                 <div class="col-md-10">
@@ -21,6 +23,10 @@
                 </div>
             </div>
             <br/>
+        </div>
+
+        <div class="col-md-12">
+            <input type="hidden"/>
         </div>
         <!--<hr/>
              <div class="col-md-12">
