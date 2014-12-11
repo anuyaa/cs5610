@@ -2,7 +2,7 @@
     background-image: url(/design/images/woven1656.png);
 }*/
 body {
-    background-image: url(/design/images/subtle1507.png);
+    background-image: url(/design/images/bg2-1988.png);
    /* font-family: 'Julee', cursive;*/
     font-size: 1.5em;
 
@@ -11,7 +11,7 @@ body {
 
 .container {
     min-height: 660px;
-    background-image: url(/design/images/subtle1507.png);
+    background-image: url(/design/images/bg2-1988.png);
     background-position: inherit;
     background-repeat: repeat;
     background-attachment: fixed;
