@@ -3,7 +3,7 @@
 }*/
 body {
     background-image: url(/design/images/subtle1507.png);
-    font-family: 'Julee', cursive;
+   /* font-family: 'Julee', cursive;*/
     font-size: 1.5em;
 
 }
@@ -206,4 +206,9 @@ a :hover{
     float: right;
     margin-right: 2em;
     margin-bottom: 1em;
+}
+
+h1{
+    color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0;
+    padding: 10px;text-align: center;
 }

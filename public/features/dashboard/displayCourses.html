@@ -8,8 +8,8 @@
             <div class="col-md-3 cleft-panel">
                 <div class="course-list">
                     <ul class="nav nav-pills nav-stacked addCourseUl" role="tablist">
-                        <li role="presentation" data-ng-click="setAddCourse()" class="course_li">
-                            <a href="">ADD Course</a></li>
+                        <!--<li role="presentation" data-ng-click="setAddCourse()" class="course_li">
+                            <a href="">ADD Course</a></li>-->
                         <li data-ng-repeat = "c in allCourses" role="presentation" class="course_li">
                             <a href ng-click="getCourseInfo(c)">{{ c.name.toLowerCase() }}
                                 <span class="glyphicon glyphicon-fire" style="float:right;" ng-click="deleteCourse(c)"></span>
@@ -24,7 +24,7 @@
 
                 <div ng-switch on='addSelection'>
                     <div ng-switch-when='yes'>
-                        <div ng-include src="'../features/dashboard/addCourse.html'"></div>
+                        <!--<div ng-include src="'../features/dashboard/addCourse.html'"></div>-->
                     </div>
                     <div ng-switch-when='no'>
                         <div ui-view >

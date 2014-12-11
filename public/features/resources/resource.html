@@ -41,7 +41,26 @@
                 <button ng-click="searchBook()" class="btn btn-primary">Submit</button>
             </div>
             <div class="col-md-12">
-                <div class="well-sm" ng-repeat="book in bitems" >
+
+                <div ng-repeat="book in bitems" >
+                    <div class="panel panel-default" style="margin-bottom:2%;">
+                        <div class="panel-heading">Title : </span>{{book.Title}}</div>
+                        <div class="panel-body">
+                            <div class="col-md-8">
+                                <span >ISBN : {{book.isbn}}</span><br/>
+                                <span>Description : </span>{{book.Description}}<br/>
+                                <a ng-href="{{$scope.book_detail.Author}}"></a>{{$scope.book_detail.Author}}
+                                <input type="hidden" ng-model="book_id" ng-value="change({{book.ID}})"  />
+                            </div>
+                            <div class="col-md-4">
+                                <img ng-src="{{book.Image}}" class="img-thumbnail" ng-model=book_id />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="well-sm" ng-repeat="book in bitems" >
                     <div style="margin-bottom:1%;">
                         <div class="col-md-12"> <span>Title : </span>{{book.Title}}</div>
                         <div class="col-md-12"> <span >ISBN : {{book.isbn}}</span></div>
@@ -50,7 +69,7 @@
                         <div class="col-md-12"><img ng-src="{{book.Image}}" class="img-thumbnail" ng-model=book_id /></div>
                         <div><input type="hidden" ng-model="book_id" ng-value="change({{book.ID}})"  /></div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </tab>
     </tabset>
